@@ -8,16 +8,18 @@ public enum QualityUpdaterFactory {
 
     private final Map<String, QualityUpdater> handlers;
     private final QualityUpdater defaultHandler;
-    private final String AgedBrieKey = "Aged Brie";
-    private final String BackstagePassesKey = "Backstage passes to a TAFKAL80ETC concert";
-    private final String SulfurasKey = "Sulfuras, Hand of Ragnaros";
+    private final String agedBrieKey = "Aged Brie";
+    private final String backstagePassesKey = "Backstage passes to a TAFKAL80ETC concert";
+    private final String conjuredKey = "Conjured Mana Cake";
+    private final String sulfurasKey = "Sulfuras, Hand of Ragnaros";
 
     QualityUpdaterFactory() {
         handlers = new ConcurrentHashMap<>();
         defaultHandler = new DefaultQualityUpdater();
-        handlers.put(AgedBrieKey, new AgedBrieQualityUpdater());
-        handlers.put(BackstagePassesKey, new BackstagePassesQualityUpdater());
-        handlers.put(SulfurasKey, new SulfurasQualityUpdater());
+        handlers.put(agedBrieKey, new AgedBrieQualityUpdater());
+        handlers.put(backstagePassesKey, new BackstagePassesQualityUpdater());
+        handlers.put(conjuredKey, new ConjuredQualityUpdater());
+        handlers.put(sulfurasKey, new SulfurasQualityUpdater());
     }
 
     public QualityUpdater getHandlerFor(String name) {
