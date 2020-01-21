@@ -1,10 +1,12 @@
 package edu.alenasoft.gildedrose;
 
 public class Item {
+  private static final int MIN_QUALITY = 0;
+  private static final int MAX_QUALITY = 50;
 
-  public String name;
-  public int sellIn;
-  public int quality;
+  private String name;
+  private int sellIn;
+  private int quality;
 
   public Item(String name, int sellIn, int quality) {
     this.setName(name);
@@ -35,6 +37,26 @@ public class Item {
 
   public void setQuality(int quality) {
     this.quality = quality;
+  }
+
+  public void cancelQuality() {
+    this.setQuality(MIN_QUALITY);
+  }
+
+  public void incrementQuality() {
+    if (this.getQuality() < MAX_QUALITY) {
+      this.setQuality(this.getQuality() + 1);
+    }
+  }
+
+  public void decrementQuality() {
+    if (this.getQuality() > MIN_QUALITY) {
+      this.setQuality(this.getQuality() - 1);
+    }
+  }
+
+  public boolean sellInIsPassed() {
+    return this.getSellIn() < 0;
   }
 
   @Override
